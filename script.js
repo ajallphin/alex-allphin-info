@@ -4,6 +4,7 @@ const ctx = canvas.getContext('2d');
 function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    console.log(`Canvas resized: width=${canvas.width}, height=${canvas.height}`);
 }
 
 window.addEventListener('resize', resizeCanvas);
@@ -33,6 +34,7 @@ class Firework {
         this.acceleration = 1.05;
         this.brightness = Math.random() * 50 + 50;
         this.targetRadius = 1;
+        console.log(`New firework created: start(${sx}, ${sy}), target(${tx}, ${ty})`);
     }
     
     update(index) {
@@ -54,6 +56,7 @@ class Firework {
         if (this.distanceTraveled >= this.distanceToTarget) {
             createParticles(this.tx, this.ty);
             fireworks.splice(index, 1);
+            console.log(`Firework reached target: (${this.tx}, ${this.ty})`);
         } else {
             this.x += vx;
             this.y += vy;
@@ -90,6 +93,7 @@ class Particle {
         this.brightness = Math.random() * 50 + 50;
         this.alpha = 1;
         this.decay = Math.random() * 0.03 + 0.01;
+        console.log(`New particle created at (${x}, ${y})`);
     }
     
     update(index) {
@@ -102,6 +106,7 @@ class Particle {
         
         if (this.alpha <= this.decay) {
             particles.splice(index, 1);
+            console.log(`Particle removed: (${this.x}, ${this.y})`);
         }
     }
     
@@ -119,6 +124,7 @@ function createParticles(x, y) {
     while (particleCount--) {
         particles.push(new Particle(x, y));
     }
+    console.log(`Created ${30} particles at (${x}, ${y})`);
 }
 
 function loop() {
@@ -148,6 +154,7 @@ canvas.addEventListener('mousedown', (e) => {
     const tx = e.clientX;
     const ty = e.clientY;
     fireworks.push(new Firework(sx, sy, tx, ty));
+    console.log(`Mouse click detected: creating firework from (${sx}, ${sy}) to (${tx}, ${ty})`);
 });
 
 window.onload = loop;
