@@ -3,12 +3,11 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    overflow: hidden;
     position: relative;
 }
 
 #fireworksCanvas {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -21,8 +20,8 @@ header {
     color: #fff;
     padding: 1rem 0;
     text-align: center;
-    z-index: 1;
     position: relative;
+    z-index: 1;
 }
 
 header h1 {
@@ -47,8 +46,9 @@ nav ul li a {
 section {
     padding: 2rem;
     margin: 1rem;
-    z-index: 1;
     position: relative;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.8); /* Added background color for readability */
 }
 
 h2 {
