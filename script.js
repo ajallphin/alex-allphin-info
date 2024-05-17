@@ -128,7 +128,6 @@ function createParticles(x, y) {
 }
 
 function loop() {
-    console.log('Looping....');
     requestAnimationFrame(loop);
     hue += 0.5;
     ctx.globalCompositeOperation = 'destination-out';
